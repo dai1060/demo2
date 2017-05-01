@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>模糊搜索search的使用</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		window.onload=function()
+		{
+			var oTab=document.getElementById('tab1');
+			var oTxt=document.getElementsByTagName('input')[0];
+			var oBtn=document.getElementsByTagName('input')[1];
+			var oBtn1=document.getElementsByTagName('input')[2];
+
+			oBtn.onclick=function()
+			{
+				for(var i=0;i<oTab.tBodies[0].rows.length;i++)
+				{
+					var sTab=oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+					var sTxt=oTxt.value.toLowerCase();
+					//*toLowerCase(),将字符串全转成小写来比较从而达到模糊大小写
+					if (sTab.search(sTxt)!=-1) 
+						//obj.search('string') ，（输入一部分来查找---模糊搜索）
+						//不等于-1则当前查找到的单元格所在的tr是所要求的
+						//循环查找相匹配的字符串,
+					{
+						oTab.tBodies[0].rows[i].style.background='yellow';
+						//查找到的tr添加背景颜色，突出
+					}
+					else
+					{
+						oTab.tBodies[0].rows[i].style.background='';
+						//还原之前查找而添加的高亮，以便下次查找重复高亮
+					}
+				}
+			}
+			oBtn1.onclick=function()
+			{
+				
+				for(var i=0;i<oTab.tBodies[0].rows.length;i++)
+				{
+						oTab.tBodies[0].rows[i].style.background='';
+						// 清除背景颜色
+				}
+				oTxt.value='';
+				//	清除输入框
+			}
+		}
+	</script>	
+</head>
+<body>
+	姓名：<input type="text" />
+	<input type="button" value="搜索"/>
+	<input type="button" value="清空"/>
+	<table id="tab1" border="1px" width="500px">
+		<thead>
+			<td>ID</td>
+			<td>姓名</td>
+			<td>年龄</td>
+			<td>操作</td>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>Blue</td>
+				<td>27</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>张三</td>
+				<td>23</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>李四</td>
+				<td>25</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>王刚</td>
+				<td>20</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>张伟</td>
+				<td>29</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

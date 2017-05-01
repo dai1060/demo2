@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+		.ancestors *{
+			border: 3px solid lightblue;
+			color: blue;
+			display: block;
+			margin: 15px;
+			padding: 5px;
+			list-style: none;
+		}
+	</style>
+	<script src="../../jquery.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('button').click(function(){
+				$('span').parent().css({'color':'red','border-color':'red'})
+			})
+			
+		})
+	</script>
+</head>
+<body>
+<div class="ancestors">
+	<div>div1
+		<ul>ul
+			<li>li
+				<span>span</span>
+			</li>
+		</ul>
+	</div>
+</div>
+<button>查找span的父元素</button>
+</body>
+</html>

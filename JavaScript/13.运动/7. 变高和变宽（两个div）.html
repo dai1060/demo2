@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>变高变宽</title>
+	<style type="text/css">
+		div{
+			width: 150px;
+			height: 150px;
+			background: red;
+			margin: 10px;
+			float: left;
+			font-size: 16px;
+			border-width: 10px;
+			border-style: solid;
+			border-color: black;
+		}
+	</style>
+	<script type="text/javascript">
+
+		window.onload=function()
+		{
+			var oDiv1=document.getElementsByTagName('div')[0];
+
+			oDiv1.onmouseover=function()
+			{
+				startMove(this,'height',300);
+			}
+			oDiv1.onmouseout=function()
+			{
+				startMove(this,'height',150);
+			}
+
+			var oDiv2=document.getElementsByTagName('div')[1];
+
+			oDiv2.onmouseover=function()
+			{
+				startMove(this,'width',300);
+			}
+			oDiv2.onmouseout=function()
+			{
+				startMove(this,'width',150);
+			}
+
+			var oDiv3=document.getElementsByTagName('div')[2];
+
+			oDiv3.onmouseover=function()
+			{
+				startMove(this,'font-size',50);
+			}
+			oDiv3.onmouseout=function()
+			{
+				startMove(this,'font-size',16);
+			}
+
+			var oDiv4=document.getElementsByTagName('div')[3];
+
+			oDiv4.onmouseover=function()
+			{
+				startMove(this,'borderWidth',100);
+			}
+			oDiv4.onmouseout=function()
+			{
+				startMove(this,'borderWidth',10);
+			}
+
+
+		};
+
+		function getStyle(obj,name)
+		{
+			if(obj.currentStyle)
+			{
+				return obj.currentStyle[name];
+			}
+			else
+			{
+				return getComputedStyle(obj,false)[name];
+			}
+		};
+
+
+		function startMove(obj,attr,iTarget)
+		{
+			
+			clearInterval(obj.timer);
+			obj.timer=setInterval(function(){
+				var cur=parseInt(getStyle(obj,attr));
+
+				var speed=(iTarget-cur)/6;
+				speed=speed>0?Math.ceil(speed):Math.floor(speed);
+
+				iTarget==cur?clearInterval(obj.timer):obj.style[attr]=cur+speed+'px';
+
+			},30);
+	    };
+	</script>
+</head>
+<body>
+	<div>变高</div>
+	<div>变宽</div>
+	<div>字体变大~</div>
+	<div>边框变大(解析 'border-width' 的值时出错。  声明被丢弃。)</div>
+</body>
+</html>

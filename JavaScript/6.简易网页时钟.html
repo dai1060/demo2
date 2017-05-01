@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>简易网页时钟</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body,div{padding: 0px;margin:0px;}
+		#clock
+		{
+			width: 400px;
+			background: #000;
+			margin: 10px auto;
+			padding: 20px 0px;
+			text-align: center;
+			color: #fff;
+		}
+		span
+		{
+			width: 100px;
+			background: #fff;
+			padding: 0px 30px;
+			line-height: 2;
+			margin: 0px 10px;
+			border:2px solid #b4b4b4;
+			color:#000;
+		}
+		p
+		{
+			font-family:"Times New Roman",Georgia,Serif;
+			text-align: right;
+			font-weight: bold;
+			margin-right: 17px;
+			margin-top: 5px;
+			margin-bottom: -10px;
+		}		
+	</style>
+	<script type="text/javascript">
+		window.onload=function() 
+		{
+			var oCk=document.getElementById('clock');
+			var aSpan=oCk.getElementsByTagName('span');//获取span标签数组
+
+			function getTimes() 
+			{
+				var aDate=new Date();//定义新的时间对象
+				var aDate=[aDate.getHours(), aDate.getMinutes(), aDate.getSeconds()];
+					//获取小时分钟和秒数添加到	数组
+				for (var i in aDate){aSpan[i].innerHTML=addNum(aDate[i]);}
+					//在数组内循环过滤  在aSpan数组内循环添加aDate数组相对应的值
+			}
+			setInterval(getTimes,1000);//定时器
+			getTimes();//让网页立刻就显示 因为函数不是马上运行会有初始间隔
+			function addNum(a) {  //当时间为个位数的时候在前面添加一个0
+				if (a<10) 
+				{
+					return '0'+a;//添加0
+				}
+				else
+				{
+					return ''+a; //添加空字符串让返回的值变成字符串类型
+				}
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="clock">
+		<span></span>点<span></span>分<span></span>秒
+		<p>By Day.</p>
+	</div>
+</body>
+</html>

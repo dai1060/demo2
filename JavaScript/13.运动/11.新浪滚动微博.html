@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>新浪滚动微博</title>
+	<style type="text/css">
+		*{margin: 0;padding:0;}
+		ul{width: 400px;height: 400px;margin: 10px auto;border:1px solid black;overflow:hidden;}
+		ul li{list-style: none;padding:4px;border-bottom: 1px dashed #999;overflow:hidden;filter: alpha(opacity:0);opacity: 0;}
+	</style>
+	<script src="move.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+
+			var oTxt=document.getElementById('txt1');
+			var oBtn=document.getElementById('btn1');
+			var oUl=document.getElementsByTagName('ul')[0]
+
+			oBtn.onclick=function(){
+
+				var oLi=document.createElement('li');
+
+				oLi.innerHTML=oTxt.value;
+				//将输入的内容赋值给li
+				
+				oTxt.value='';
+				//清空输入框
+
+				if (oUl.children.length>0) {
+					//判断是否有li
+
+					oUl.insertBefore(oLi, oUl.children[0]);
+					//有，在最前面插入
+				}else{
+
+					oUl.appendChild(oLi);
+					//没有， 直接插入
+				}
+
+				//运动
+				var iHeight=oLi.offsetHeight;
+
+				oLi.style.height='0';
+				//初始化高度
+
+				//链式运动
+				startMove(oLi, {height:iHeight}, function(){
+
+					startMove(oLi, {opacity:100});
+				});
+			}
+		};
+	</script>
+</head>
+<body>
+	<textarea id="txt1" rows="4" cols="40"></textarea>
+	<button id="btn1" >发布</button>
+	<ul>
+		<!-- <li>sdadfsdf</li> -->
+	</ul>
+</body>
+</html>

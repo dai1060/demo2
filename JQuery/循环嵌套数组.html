@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="jquery.js"></script>
+	<script>
+	$(document).ready(function(){
+
+		var myObj={
+			"name":"网站",
+			"num":3,
+			"sites":[
+				{"name":"Google","info":["安卓","Google搜索","Google翻译"]},
+				{"name":"Runoob","info":["菜鸟工具","菜鸟微信","菜鸟教程"]},
+				{"name":"Taobao","info":["购物","物流","电商"]}
+			]
+		};
+
+
+		var x="";
+		for (var i in myObj.sites){
+			
+			x += "<h1>"+myObj.sites[i].name+"</h1>";
+			
+			for(var j in myObj.sites[i].info){
+				x +=myObj.sites[i].info[j]+"<br />";
+			};
+		};
+		
+		document.getElementById('demo').innerHTML=x;
+	});
+
+
+	</script>
+</head>
+<body>
+	<p>循环嵌套数组</p>
+	<p id="demo"></p>
+</body>
+</html>

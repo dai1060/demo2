@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>鼠标移进移出</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#div1{
+			width: 200px;
+			height:150px;
+			background: #ccc;
+			display: none;
+		}
+	</style>
+</head>
+<script type="text/javascript">
+	function fnTooltip() {
+		document.getElementById('div1').style.display="block";
+	}
+	function fnTooltip01() {
+		document.getElementById('div1').style.display="none";
+	}
+</script>
+<body>
+<input type="checkbox" onmouseover="fnTooltip()" onmouseout="fnTooltip01()" />
+<div id="div1" >请注意不要在网吧和公用电脑上勾选，以免。。。。</div>
+</body>
+</html>

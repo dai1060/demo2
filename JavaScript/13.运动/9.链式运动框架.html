@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>链式运动框架</title>
+	<style type="text/css">
+		body{overflow: hidden;}
+		#div1{position: fixed;bottom: 0px;right: 0px;width: 50px;height: 30px;line-height: 30px;background: red;text-align: center;z-index: 20002}
+		#div2{position: absolute;right: -100px;bottom: 0px;background: yellow;width: 100px;height: 30px;z-index: 20001;}
+		#div3{position: absolute;bottom: -80px;right: 0px;background: blue;width: 100px;height: 100px;display: none;}
+		#div4{width: 100px;height: 100px;background: red;}
+	</style>
+	<script type="text/javascript">
+
+	window.onload=function()
+	{
+		var Div1=document.getElementById('div1');
+		var Div2=document.getElementById('div2');
+		var Div3=document.getElementById('div3');
+		var Div4=document.getElementById('div4');
+
+		Div1.onmouseover=function()
+		{
+
+			startMove(Div2,'right',0, function(){
+				//显示div2
+				Div3.style.display='block';
+				startMove(Div3,'bottom',0);
+				//显示div3
+			});
+
+		};
+		Div3.onclick=function()
+		//点击隐藏
+		{
+			startMove(Div3,'bottom',-100, function(){
+				//隐藏div3
+				Div3.style.display='none';
+				startMove(Div2,'right',-100);
+				//隐藏div2
+			});
+			
+		};
+		Div4.onmouseover=function()
+		{
+
+			startMove(Div4,'width',200, function(){
+				
+				startMove(Div4,'height',200);
+
+			});
+
+		};
+		Div4.onmouseout=function()
+		{
+			startMove(Div4,'height',100, function(){
+				
+				startMove(Div4,'width',100);
+				
+			});
+		};
+
+
+	};
+
+		function getStyle(obj,name)
+	{
+		if(obj.currentStyle)
+		{
+			return obj.currentStyle[name];
+		}
+		else
+		{
+			return getComputedStyle(obj,false)[name];
+		}
+	};
+
+
+	function startMove(obj,attr,iTarget,fnEnd)
+	{
+		
+		clearInterval(obj.timer);
+		obj.timer=setInterval(function(){
+			var cur=0;
+			if (attr=='opacity')
+			{
+				var cur=Math.round(parseFloat(getStyle(obj,attr))*100);
+				//四舍五入最后的结果，不会有后面一串0
+				//*100方便计算透明度
+			}
+			else
+			{
+				var cur=parseInt(getStyle(obj,attr));
+			}
+			var speed=(iTarget-cur)/6;
+			speed=speed>0?Math.ceil(speed):Math.floor(speed);
+
+			// iTarget==cur?clearInterval(obj.timer):obj.style[attr]=cur+speed+'px';
+			if(iTarget==cur)
+			{
+				clearInterval(obj.timer);
+				if(fnEnd)fnEnd();
+			}
+			else
+			{
+				if(attr=='opacity')
+				{
+					obj.style.filter='alpha(opacity:'+(cur+speed)+')';
+					obj.style.opacity=(cur+speed)/100;
+				}
+				else
+				{
+					obj.style[attr]=cur+speed+'px';
+				}
+				
+			}
+		},30);
+	};
+
+	</script>
+</head>
+<body>
+	<div id="div1">←</div>
+	<div id="div2">第一步</div>
+	<div id="div3">第二步</div>
+	<div id="div4"></div>
+
+</body>
+</html>

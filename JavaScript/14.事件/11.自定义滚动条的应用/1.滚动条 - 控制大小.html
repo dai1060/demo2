@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>自定义滚动条</title>
+	<style type="text/css">
+		#parent{width: 600px;height: 20px;position: relative;background: #ccc;margin: 50px auto 0;}
+		#div1{width: 20px;height: 20px;position:absolute;background: red;top: 0;left: 0;}
+		#div2{width: 0px;height: 0px;position: relative;background: green;}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+
+			var oParent=document.getElementById('parent');
+			var oDiv1=document.getElementById('div1');
+			var oDiv2=document.getElementById('div2');
+
+			//鼠标点击时拖拽
+			oDiv1.onmousedown=function(ev){
+
+				var oEvent= ev||event;
+
+				// 计算出鼠标与div的相对距离
+				var disX=oEvent.clientX-oDiv1.offsetLeft;
+
+				//拖拽
+				document.onmousemove=function(ev){
+
+					var oEvent= ev||event;
+
+					var edgeLeft=oEvent.clientX-disX;
+
+					//限制拖拽到parent外
+					if (edgeLeft<0) 
+					{
+						edgeLeft=0;
+					}
+					else if (edgeLeft>oParent.offsetWidth-oDiv1.offsetWidth) 
+					{
+						edgeLeft=oParent.offsetWidth-oDiv1.offsetWidth
+					}
+
+					//鼠标与div的相对距离不变  鼠标位置改变div位置也改变
+					oDiv1.style.left=edgeLeft+'px';
+
+					// 计算当前div1距离所占的百分比
+					var scrl=edgeLeft/(oParent.offsetWidth-oDiv1.offsetWidth);
+					oDiv2.style.width=400*scrl+'px';
+					oDiv2.style.height=400*scrl+'px';
+					//max*scrl得出的结果为当前宽高
+				}
+
+				document.onmouseup=function(){
+
+					//关闭移动
+					document.onmousemove=null;
+					document.onmouseup=null;
+				}
+				return false;
+				//阻止低版本ff 拖拽bug
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="parent">
+		<div id="div1"></div>
+	</div>
+	<div id="div2"></div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{margin: 0px;padding:0px;font-family: 微软雅黑;}
+		.menu {
+			background-color:#272822;
+			color: #fff;
+			height: 50px;
+			line-height: 48px;
+		}
+		.menu ul {
+
+			list-style: none;
+		}
+		.menu ul li{
+			float: left;
+			width: 100px;
+			text-align: center;
+		}
+		.menu ul li:hover{
+			background-color: #ccc;
+			cursor: pointer;
+			border-top:2px solid red;
+		}
+		.info {
+			background-color: #ccc;
+			height: 150px;
+			overflow: hidden;
+			padding: 15px;
+		}
+		.info p{
+			display: none;
+		}
+		.info p:first-child{
+			display: block;
+		}
+	</style>
+	<script src="jquery.js"></script>
+	<script>
+	$(document).ready(function(){
+		
+		// 默认第一个标签显示
+		$('.menu li:first').css({
+			'background-color':'#ccc',
+			'border-top':'2px solid red'
+		});
+
+		// 移入时高亮显示标签 并 恢复其他标签默认样式
+		// 移入时 显示相应字段 并 隐藏非相应字段
+		$('.menu li').mouseenter(function(){
+			$(this).css({
+				'background-color':'#ccc',
+				'border-top':'2px solid red'
+			});
+			$('.menu li').not($(this)).css({
+				'background-color':'#272822',
+				'border-top':''   //删除属性值 设置为空即可
+			});
+			
+			// index方法返回当前下标 
+			idx = $(this).index('.menu li'); 
+
+			$('.info p').eq(idx).show();
+			$('.info p').not($('.info p').eq(idx)).hide();
+		});
+	});
+	</script>
+</head>
+<body>
+	<div class="menu">
+		<ul>
+			<li>linux</li>
+			<li>jQuery</li>
+			<li>JavaScript</li>
+		</ul>
+	</div>
+	<div class="info">
+		<p>linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!linux is very much!</p>
+		<p>jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!jquery is very much!</p>
+		<p>javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!javascript is very much!</p>
+	</div>
+</body>
+</html>

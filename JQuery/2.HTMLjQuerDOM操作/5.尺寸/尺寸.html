@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		.div1{width: 400px;height: 200px;border: 1px solid blue;background-color: lightblue;padding: 5px;margin: 3px;}
+	</style>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="../../jquery.js"></script>
+	<script>
+		$(document).ready(function(){
+
+			$('button').click(function(){
+
+				var txt1='';
+				txt1 += "div的宽是："+$('div').width()+'<br />';
+				txt1 += "div的高是："+$('div').height()+'<br />';
+				txt1 += "div的宽，包含padding是："+$('div').innerWidth()+'<br />';
+				txt1 += "div的高，包含padding是："+$('div').innerHeight()+'<br />';
+				txt1 += "div的宽，包含padding和border是："+$('div').outerWidth()+'<br />';
+				txt1 += "div的高，包含padding和border是："+$('div').outerHeight()+'<br />';
+				txt1 += "div的宽，包含padding、border和margin是："+$('div').outerWidth(true)+'<br />';
+				txt1 += "div的高，包含padding、border和margin是："+$('div').outerHeight(true)+'<br />';
+				$('div').html(txt1);
+			})
+		});
+	</script>
+</head>
+<body>
+<div class="div1"></div>
+<button>计算 div 元素尺寸</button>
+</body>
+</html>

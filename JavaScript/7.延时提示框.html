@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>延时提示框</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		div
+		{
+			float: left;
+			margin: 10px;
+		}
+		#div1
+		{
+			width:50px;
+			height: 50px;
+			background: red;
+		}
+		#div2
+		{
+			width: 150px;
+			height: 150px;
+			background: #ccc;
+			display: none;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function() 
+		{
+			var oDiv1=document.getElementById('div1');
+			var oDiv2=document.getElementById('div2');
+			var timer=null;
+			//定义一个空的定时器，方便赋值
+
+			oDiv2.onmouseover=oDiv1.onmouseover=function() 
+			{
+				clearTimeout(timer);
+				//清除定时器 让div2显示出来（不清除不显示）
+				oDiv2.style.display='block';
+			}
+			oDiv2.onmouseout=oDiv1.onmouseout=function() 
+			{
+				timer=setTimeout(function(){oDiv2.style.display='none';}, 500);
+				//定时器赋值给timer，方便接下来clearTimeou
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+</body>
+</html>

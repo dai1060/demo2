@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="jquery.js"></script>
+	<script>
+	$(document).ready(function(){
+		
+		//  data向被选元素附加数据 不影响标签
+		$('h1').each(function(i){
+			$(this).data('num',i+1);
+		});	
+		$('h1').click(function(){
+			$(this).html($(this).data('num'));
+		});
+	});
+	</script>
+</head>
+<body>
+	<h1>aaaaaaaaaaaaaaa</h1>
+	<h1>aaaaaaaaaaaaaaa</h1>
+	<h1>aaaaaaaaaaaaaaa</h1>
+	<h1>aaaaaaaaaaaaaaa</h1>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>显示或隐藏</title>
+	<style type="text/css">
+		#div1{
+
+			width: 100px;
+			height: 300px;
+			background: #ccc;
+			display: none;
+		}
+	</style>
+</head>
+<script type="text/javascript">
+	function toDiv1() {
+		var oDiv=document.getElementById('div1');
+
+		if (oDiv.style.display=='none') {
+
+			oDiv.style.display='block';
+		} 
+		else {
+
+			oDiv.style.display='none';
+		}
+	}
+</script>
+<body>
+	<input type="button" onclick="toDiv1()" value="点击显示或隐藏" />
+	<div id="div1"></div>
+</body>
+</html>

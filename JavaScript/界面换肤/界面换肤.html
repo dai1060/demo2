@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>界面换肤</title>
+	<link id="hf" rel="stylesheet" type="text/css" href="skin1.css">
+</head>
+<script type="text/javascript">
+	function toSkin1() {
+		var oSkin=document.getElementById('hf');
+		oSkin.href='skin1.css';
+	}
+	function toSkin2() {
+		var oSkin=document.getElementById('hf');
+		oSkin.href='skin2.css';
+	}
+</script>
+<body>
+	<input type="button" value="皮肤1" onclick="toSkin1()" />
+	<input type="button" value="皮肤2" onclick="toSkin2()"/>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>删除元素</title>
+	<meta charset="utf-8">
+	<style type="text/css"></style>
+	<script type="text/javascript">
+		window.onload=function()
+		{
+			var oUl=document.getElementsByTagName('ul')[0];
+			var aA=document.getElementsByTagName('a');
+
+			for (var i = 0; i < aA.length; i++) 
+			{
+				aA[i].onclick=function()
+				{
+					oUl.removeChild(this.parentNode);
+					//删除当前事件（a）的父元素（li）
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul>
+		<li>435234535<a href="javascript:;">删除</a></li>
+		<li>gsdfgdsfg<a href="javascript:;">删除</a></li>
+		<li>cxvbcxvbc<a href="javascript:;">删除</a></li>
+		<li>23423423<a href="javascript:;">删除</a></li>
+		<li>khkjhjhkh<a href="javascript:;">删除</a></li>
+
+	</ul>
+</body>
+</html>

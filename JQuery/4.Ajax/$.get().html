@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="jquery.js"></script>
+	<script>
+	$(document).ready(function(){
+
+		$('button').click(function(){
+
+			// 使用get请求获取数据   get会有缓存  使用?+new Date()来清除缓存
+			$.get('Ajax.txt?'+new Date(),function(data,status){
+
+				$('div').html(data+'状态：'+status);
+			})
+		})
+	})
+	</script>
+</head>
+<body>
+	<div></div>
+	<button>获取从Ajax.txt中获取的数据</button>
+</body>
+</html>

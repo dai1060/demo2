@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="../jquery.js"></script>
+	<script>
+	var jq=$.noConflict();
+	jq(document).ready(function(){
+
+		jq('button').click(function(){
+
+			jq('p').text('是否显示p字段');
+		});
+	});
+	</script>
+</head>
+<body>
+	<p></p>
+	<button>检验jQuery是否工作</button>
+</body>
+</html>

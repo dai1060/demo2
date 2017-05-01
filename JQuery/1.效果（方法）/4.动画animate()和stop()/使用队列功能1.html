@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#div1{width: 50px;height: 50px;background-color: #98bf21;position: absolute;margin: 5px;}
+	</style>
+	<script type="text/javascript" src="../../jquery.js"></script>
+	<script>
+
+	$(document).ready(function(){
+
+		$('button').click(function(){
+
+			//第一种
+			// $('#div1').animate({height:'150px'})
+			// $('#div1').animate({width:'150px'})
+			// $('#div1').animate({height:'50px'})
+			// $('#div1').animate({width:'50px'})
+			
+			//第二种
+			var box = $('#div1');
+			box.animate({height:'150px'})
+			box.animate({width:'150px'})
+			box.animate({height:'50px'})
+			box.animate({width:'50px'})
+		})
+	});
+
+	</script>
+</head>
+<body>
+<button>开始动画</button>
+<div id="div1"></div>
+</body>
+</html>

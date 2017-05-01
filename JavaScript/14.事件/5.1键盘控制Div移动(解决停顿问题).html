@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>键盘控制Div移动(解决停顿问题)</title>
+	<style type="text/css">
+		div{width: 100px;height: 100px;background: #ccc;position:absolute;border:1px solid black;}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+
+			var oDiv=document.getElementsByTagName('div')[0];
+			var bTop=bRight=bDown=bLeft=false;
+
+			//设置定时器解除停顿
+			setInterval(function(){
+
+				if (bTop) {
+					oDiv.style.top = oDiv.offsetTop-10+"px"
+				}
+				else if (bDown) {
+					oDiv.style.top = oDiv.offsetTop+10+"px"
+				}
+				else if (bLeft) {
+					oDiv.style.left = oDiv.offsetLeft-10+"px"
+				}
+				else if (bRight) {
+					oDiv.style.left = oDiv.offsetLeft+10+"px"
+				}
+			},30);
+
+				//相应的按键按下的时候定时器开
+			    document.onkeydown = function(ev){
+			        var oEvent = ev || event;
+			        var keyCode = oEvent.keyCode;
+			        switch(keyCode){
+			           case 37: bLeft = true;break;
+			           case 38: bTop = true;break;
+			           case 39: bRight = true;break;
+			           case 40: bDown = true;break;
+			        }
+			    }
+
+			    //相应的按键弹起的时候定时器关
+			    document.onkeyup = function(ev){
+			        var oEvent = ev || event;
+			        var keyCode = oEvent.keyCode;
+			        switch(keyCode){
+			           case 37: bLeft = false;break;
+			           case 38: bTop = false;break;
+			           case 39: bRight = false;break;
+			           case 40: bDown = false;break;
+			        }
+				}
+			}
+	</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

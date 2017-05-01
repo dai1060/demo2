@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">.blue{color:blue;}</style>
+	<script src="../../jquery.js"></script>
+	<script>
+		$(document).ready(function(){
+
+			$('button').click(function(){
+
+				$('h1,h2,p,div').toggleClass('blue');
+			});
+		});
+	</script>
+</head>
+<body>
+<h1 class="blue">这是标题</h1>
+<h2 class="blue">这是标题</h2>
+<p class="blue">这是中的一个段落</p>
+<p>这是中的另一个段落</p>
+<div>这是div中的文本</div>
+<br />
+<button>toggleClass</button>
+</body>
+</html>

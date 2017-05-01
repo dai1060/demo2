@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="../jquery.js"></script>
+</head>
+<body>
+	<button>赞(<span>0</span>)</button>
+</body>
+<script>
+//只能点一下
+// $('button:eq(0)').one('click',function(){
+// 	var i=parseInt($('span').html())+1;
+// 	$('span').html(i);
+// 	$('button:eq(0)').css({'background-color':'red','color':'#fff'})
+// });
+	var i=0;
+	$('button').click(function(){
+		var num=null;
+		if (i%2==0) {
+			num=parseInt($('span').html())+1;
+		}else{
+			num=parseInt($('span').html())-1;
+		}
+		$('span').html(num);
+		i++;
+	});
+</script>
+</html>

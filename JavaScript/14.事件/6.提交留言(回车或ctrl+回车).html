@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>提交留言</title>
+	<style type="text/css">textarea{resize: none;}</style>
+	<script type="text/javascript">
+		window.onload=function(){
+
+			var oTxt1=document.getElementsByTagName('input')[0];
+			var oTxt2=document.getElementsByTagName('textarea')[0];
+			
+			oTxt1.onkeydown=function(ev){
+
+				var oEvent=ev||event;
+
+
+				//    回车提交留言
+				// if (oEvent.keyCode==13) {
+
+				// 	oTxt2.value+=oTxt1.value+'\n';
+
+				// 	oTxt1.value='';
+				// }
+				
+				//    ctrl+回车 提交留言 
+				if (oEvent.keyCode==13&&oEvent.ctrlKey) {
+
+					oTxt2.value+=oTxt1.value+'\n';
+
+					oTxt1.value='';
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" /></br> 
+	<!-- <button>提交</button>-->
+	<textarea rows="10" cols="40"></textarea>
+</body>
+</html>

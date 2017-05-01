@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>变高变宽</title>
+	<style type="text/css">
+		div{
+			width: 150px;
+			height: 150px;
+			background: red;
+			margin: 10px;
+			float: left;
+			font-size: 16px;
+			filter: alpha(opacity:30);
+			opacity: 0.3;
+		}
+	</style>
+	<script type="text/javascript">
+
+		window.onload=function()
+		{
+			var oDiv1=document.getElementsByTagName('div')[0];
+
+			oDiv1.onmouseover=function()
+			{
+				startMove(this,'opacity',100);
+			}
+			oDiv1.onmouseout=function()
+			{
+				startMove(this,'opacity',30);
+			}
+
+
+
+		};
+
+		function getStyle(obj,name)
+		{
+			if(obj.currentStyle)
+			{
+				return obj.currentStyle[name];
+			}
+			else
+			{
+				return getComputedStyle(obj,false)[name];
+			}
+		};
+
+
+		function startMove(obj,attr,iTarget)
+		{
+			
+			clearInterval(obj.timer);
+			obj.timer=setInterval(function(){
+				var cur=0;
+				if (attr=='opacity')
+				{
+					var cur=Math.round(parseFloat(getStyle(obj,attr))*100);
+					//四舍五入最后的结果，不会有后面一串0
+					//*100方便计算透明度
+				}
+				else
+				{
+					var cur=parseInt(getStyle(obj,attr));
+				}
+				var speed=(iTarget-cur)/6;
+				speed=speed>0?Math.ceil(speed):Math.floor(speed);
+
+				// iTarget==cur?clearInterval(obj.timer):obj.style[attr]=cur+speed+'px';
+				if(iTarget==cur)
+				{
+					clearInterval(obj.timer);
+				}
+				else
+				{
+					if(attr=='opacity')
+					{
+						obj.style.filter='alpha(opacity:'+(cur+speed)+')';
+						obj.style.opacity=(cur+speed)/100;
+					}
+					else
+					{
+						obj.style[attr]=cur+speed+'px';
+					}
+					
+				}
+			},30);
+	    };
+	</script>
+</head>
+<body>
+	<div></div>
+	
+</body>
+</html>

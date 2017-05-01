@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.warn{
+			display: none;
+			color: red;
+			font-size: 0.8em;
+		}
+	</style>
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('button').click(function(){
+			
+			Show('select','span');
+
+			$("select").blur(function() {
+				Show('select','span');
+		    });
+		});
+	});
+	// 监控下拉框是否为空
+	function Show(obj1,obj2){
+
+		if ($(obj1).val() == ""){ 
+        	$(obj2).css('display','block');
+        	$(obj1).focus(); 
+		}else{
+			$(obj2).css('display','none');
+		}
+	}
+	</script>
+</head>
+<body>	
+<select>
+	<option value=""></option>
+	<option value="AL">Alabama</option>
+	<option value="WY">Wyoming</option>
+	<option value="WY">Wyoming</option>
+	<option value="WY">Wyoming</option>
+</select>
+<br />
+<span class="warn">*不可为空，请重新选择</span>
+<button>保存</button>
+</body>
+</html>

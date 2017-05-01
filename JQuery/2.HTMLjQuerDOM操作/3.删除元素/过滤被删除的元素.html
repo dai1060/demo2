@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="../../jquery.js"></script>
+	<script>
+		$(document).ready(function(){
+
+			$('button').click(function(){
+
+				// 删除class为delete的p元素
+				$('p').remove('.delete');
+			})
+		});
+	</script>
+</head>
+<body>
+<div style="background-color: yellow;border: 1px solid black;width: 200px;">
+这是div中的文本
+<p class="delete">这是div中的一个段落</p>
+<p class="delete">这是div中的另一个段落</p>
+</div>
+<br />
+<button>过滤被删除的元素</button>
+</body>
+</html>

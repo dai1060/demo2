@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script>
+		window.onload=function(){
+
+			var oTxt=document.getElementById('txt1');
+			var oBtn=document.getElementById('btn');
+
+			oBtn.onclick=function(){
+
+				var reg=/^\w+@[a-z0-9]+\.[a-z]{2,}$/i;
+
+				if (reg.test(oTxt.value)) {
+					alert('没写错');
+				}
+				else{
+					alert('写错了');
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+邮箱格式校验<br />
+<input type="text" id="txt1"/>
+<input type="button" id="btn" value="校验"/>
+</body>
+</html>

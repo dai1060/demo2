@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+		.siblings,.siblings *{
+			display: block;
+			border: 2px solid lightblue;
+			color: blue;
+			padding: 5px;
+			margin: 15px;
+		}
+	</style>
+	<script src="../../jquery.js"></script>
+	<script>
+
+		$(document).ready(function(){
+
+			$('span').prev().css({'color':'red','border':'2px solid red'})
+		})
+	</script>
+</head>
+<body>
+	<div class="siblings">
+		<p>这是一个段落</p>
+		<p>这是另一个段落</p>
+		<span>这是一个span</span>
+		<h2>这是h2</h2>
+		<h3>这是h3</h3>
+	</div>
+	prev()方法显示span的上一个同胞元素
+</body>
+</html>

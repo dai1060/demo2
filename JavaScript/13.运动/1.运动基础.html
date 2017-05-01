@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>运动基础</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#div1{
+			width: 150px;
+			height: 150px;
+			background: red;
+			top: 50px;
+			left: 0px;
+			position: absolute;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function()
+		{
+			var oDiv=document.getElementById('div1');
+			var oBtn=document.getElementsByTagName('input')[0];
+			var timer=null;
+
+			oBtn.onclick=function()
+			{
+				var speed=1;
+				//定义速度（位移长度）
+				clearInterval(timer);
+				//保证同时只有一个定时器在运行
+				timer=setInterval(function(){
+
+					if (oDiv.offsetLeft>=300) 
+					{
+						clearInterval(timer)
+						//当移动到300距离时停下
+					}
+					else
+						//避免大于300再次点击时会执行定时器
+					{
+						oDiv.style.left=oDiv.offsetLeft+speed+'px';
+					}
+				},30);
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="开始运动" />
+	<div id="div1"></div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+		.descendants *{
+
+			display: block;
+			border: 2px solid lightgrey;
+			color: lightgrey;
+			padding: 5px;
+			margin: 15px;
+		}
+	</style>
+	<script src="../../jquery.js"></script>
+	<script>
+		$(document).ready(function(){
+
+			// 遍历div元素的所有后代元素
+			// $('div').find('*').css({'color':'red','border':'2px solid red'})
+			
+			// 遍历div元素后代元素中的span元素
+			$('div').find('span').css({'color':'red','border':'2px solid red'})
+		})
+	</script>
+</head>
+<body>
+<div class="descendants">div元素(current)
+	<p>p元素(儿子元素)
+		<span>span元素(孙子元素)</span>
+	</p>
+	<p>p元素(儿子元素)
+		<span>span元素(孙子元素)</span>
+	</p>
+</div>
+</body>
+</html>

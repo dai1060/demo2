@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>获取相同className的节点</title>
+	<meta charset="utf-8">
+	<style type="text/css"></style>
+	<script type="text/javascript">
+		window.onload=function()
+		{
+			function getByClass(oParent,aClass)
+			// 建立一个函数 用来获取所需要的相同classname的节点
+			{	
+				var aResult=[];
+				//新建空数组用来放获取的节点
+				var aEle=oParent.getElementsByTagName('*');
+				//获取该父元素下一层所有的节点
+				for (var i = 0; i < aEle.length; i++) 
+				{
+					if(aEle[i].className==aClass)
+					{
+						aResult.push(aEle[i]);
+						//在空数组中存放所找的相同classname的节点
+					}
+				}
+				return aResult;
+			}
+			var oUl=document.getElementsByTagName('ul')[0];
+			var aLi=getByClass(oUl,'box');
+
+			for (var i = 0; i < aLi.length; i++) 
+			{
+				aLi[i].style.background='red';
+			}
+
+		}
+	</script>
+</head>
+<body>
+		<ul>
+			<li class="box"></li>
+			<li class="box"></li>
+			<li></li>
+			<li class="box"></li>
+			<li></li>
+		</ul>
+</body>
+</html>

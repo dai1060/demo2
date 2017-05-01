@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>拖拽时不会选中文字(兼容优化)</title>
+	<style type="text/css">
+		#div1{width:100px;height: 100px;background: red;position:absolute;}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+
+			var oDiv=document.getElementById('div1');
+
+			//鼠标点击时拖拽
+			oDiv.onmousedown=function(ev){
+
+				var oEvent= ev||event;
+
+				// 计算出鼠标与div的相对距离
+				var disX=oEvent.clientX-oDiv.offsetLeft;
+				var disY=oEvent.clientY-oDiv.offsetTop;
+
+				if (oDiv.setCapture) {
+
+					//IE
+					oDiv.onmousemove=mouseMove;
+					oDiv.onmouseup=mouseUp;
+					}
+
+					//事件捕获
+					oDiv.setCapture();
+					return false;
+					//阻止低版本ff 拖拽bug
+				}else
+				{
+					//Chrome、FF
+					document.onmousemove=mouseMove;
+					document.onmouseup=mouseUp;
+
+					return false;
+					//阻止低版本ff 拖拽bug
+				};
+
+
+				function mouseMove (ev){
+
+					var oEvent= ev||event;
+
+					// div的左边距和上边距
+					var edgeLeft=oEvent.clientX-disX;
+					var edgeTop=oEvent.clientY-disY;
+
+					//鼠标与div的相对距离不变  鼠标位置改变div位置也改变
+					oDiv.style.left=edgeLeft+'px';
+					oDiv.style.top=edgeTop+'px';
+				};
+
+
+				function mouseUp (){
+
+					//关闭移动
+					this.onmousemove=null;
+					this.onmouseup=null;
+
+					if (oDiv.releaseCapture) {
+						//事件弹起
+					oDiv.releaseCapture();
+					};
+				};
+			};
+		};
+		
+	</script>
+</head>
+<body>
+faefwefafdas</br>
+sadfasfdsf
+	<div id="div1">faefwefafdas</br>
+sadfasfdsf</div>
+
+</body>
+</html>

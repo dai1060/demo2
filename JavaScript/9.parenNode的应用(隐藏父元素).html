@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>parentNode的应用</title>
+	<meta charset="utf-8">
+	<style type="text/css"></style>
+	<script type="text/javascript">
+		window.onload=function()
+		{
+			var aA=document.getElementsByTagName('a');
+
+			for(var i=0;i<aA.length;i++)
+			{
+				aA[i].onclick=function()
+				{
+					this.parentNode.style.display='none';
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<ul>
+			<li>435234535<a href="javascript:;">隐藏</a></li>
+			<li>gsdfgdsfg<a href="javascript:;">隐藏</a></li>
+			<li>cxvbcxvbc<a href="javascript:;">隐藏</a></li>
+			<li>23423423<a href="javascript:;">隐藏</a></li>
+			<li>khkjhjhkh<a href="javascript:;">隐藏</a></li>
+
+		</ul>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>自定义右键菜单</title>
+	<style type="text/css">
+		div,ul,ul li{padding: 0;margin: 0;list-style: none;}
+		div{background: #ccc;border:1px solid black;position:absolute;display: none;}
+		
+	</style>
+	<script type="text/javascript">
+		document.oncontextmenu=function(ev){
+
+			var oEvent=ev||event;
+			var oDiv=document.getElementsByTagName('div')[0];
+
+			var pos=getPos(oEvent);
+
+			oDiv.style.display='block';
+
+			oDiv.style.left=pos.x+'px';
+			oDiv.style.top=pos.y+'px';
+			//top位置为可视区鼠标的(Y+滚动条)位置
+			
+			return false;
+			//屏蔽默认右键菜单
+		};
+
+		document.onclick=function (){
+
+			var oDiv=document.getElementsByTagName('div')[0];
+
+			oDiv.style.display='none';
+			//alert('document被点击了');
+		};
+
+
+		//封装获取鼠标绝对位置的函数
+		function getPos(ev)
+		{
+			//获取当前滚动条位置
+			var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+			var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+
+			return{x:ev.clientX+scrollLeft, y:ev.clientY+scrollTop};
+			// 返回鼠标绝对位置的X和Y
+		}
+	</script>
+</head>
+<body>
+	<div>
+	<ul>
+		<li>aaaa</li>
+		<li>bbbb</li>
+		<li>cccc</li>
+		<li>dddd</li>
+	</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#div1{width: 150px;height: 100px;background-color: #98bf21;position: absolute;margin: 5px;}
+	</style>
+	<script type="text/javascript" src="../../jquery.js"></script>
+	<script>
+
+	$(document).ready(function(){
+
+		$('#start').click(function(){
+
+			var box = $('#div1');
+			box.animate({left:'200px'},5000);
+			box.animate({fontSize:'3em'},5000);
+		});
+		$('#stop').click(function(){
+			$('#div1').stop();
+		});
+		$('#stopAll').click(function(){
+			$('#div1').stop(true);
+		});
+		$('#stopAllandDone').click(function(){
+			$('#div1').stop(true,true);
+		});
+	});
+
+	</script>
+</head>
+<body>
+<button id="start">开始</button>
+<button id="stop">停止当前动画</button>
+<button id="stopAll">停止所有动画</button>
+<button id="stopAllandDone">停止所有动画，并完成当前动画</button>
+<div id="div1">Hello!</div>
+</body>
+</html>

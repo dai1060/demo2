@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>无缝滚动</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		*{padding: 0px;margin: 0px;}
+		#div1
+		{
+			background: green;
+			width: 488px;
+			height: 120px;
+			/*overflow:hidden;*/
+			margin: 200px auto;
+			position: relative;
+			overflow: hidden;
+		}
+		#div1 ul{position: absolute;left: 0;top:0;}
+		li
+		{
+			/*display: block;*/
+			/*当有浮动或者绝对定位时 不用displa:block也能设置宽高*/
+			width: 120px;
+			height: 120px;
+			border-left: 1px solid black;
+			border-right: 1px solid black;
+			background: red;
+			float: left;
+			/*margin:0px 10px;*/
+			list-style: none;
+			text-align: center;
+			line-height: 120px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function() 
+		{
+			var oDiv=document.getElementById('div1');
+			var oUl=oDiv.getElementsByTagName('ul')[0];
+			var aLi=oUl.getElementsByTagName('li');
+			var speed=-2;
+			// 定义一个初始向左滚动（正负决定滚动的方向，大小决定滚动的速度）
+
+			oUl.innerHTML=oUl.innerHTML+oUl.innerHTML;
+			// 设置 两倍的li  实现滚动时的无缝衔接
+			oUl.style.width=aLi[0].offsetWidth*aLi.length+'px';
+			//设置ul的宽为li总的宽  否则无法在一行中显示
+
+			function timer() 
+				{
+					if (oUl.offsetLeft<-oUl.offsetWidth/2) 
+					{
+						return oUl.style.left='0';
+						// 如果ul的左边距小于ul宽度的一半（左边距为负，需要添加'-'）
+						// 则ul的左边距重新定为0，（回到初始位置）
+					}
+					if (oUl.offsetLeft>0) 
+					{
+						oUl.style.left=-oUl.offsetWidth/2+'px';
+					}
+					oUl.style.left=oUl.offsetLeft+speed+'px';
+				}
+			var fnTime=setInterval(timer,50);
+			oDiv.onmouseover=function() 
+			{
+				clearInterval(fnTime);
+				//鼠标移入时 停止滚动
+			}
+			oDiv.onmouseout=function() 
+			{
+				fnTime=setInterval(timer,50);
+				//鼠标移出时 重启定时器（打开定时器）
+			}
+			document.getElementsByTagName('input')[0].onclick=function() 
+			{
+				speed=-2;
+				//当点击第一个按钮时向左滚动
+			};
+			document.getElementsByTagName('input')[1].onclick=function() 
+			{
+				speed=2;
+				//当点击第二个按钮时向右滚动
+			};
+
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="向左" />
+	<input type="button" value="向右" />
+	<div id="div1">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+	</div>
+
+
+</body>
+</html>

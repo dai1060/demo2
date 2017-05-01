@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>each遍历jQuery对象</title>
+	<script src="../../jquery.js"></script>
+	<script>
+	$(document).ready(function(){
+
+		// // 用js和jQuery方法的结合使用
+		// $('h1').each(function(i){
+		// 	// 获取h1集合的数组，index设置num属性的值
+		// 	$('h1').get()[i].setAttribute('num',i+1);
+		// });
+		// $('h1').click(function(){
+		// 	this.innerHTML=this.getAttribute('num');
+		// })
+
+		$('h1').each(function(i){
+			$(this).attr('num',i+1);
+		});
+
+		$('h1').click(function(){
+			$(this).text($(this).attr('num'));
+		})
+	});
+	</script>
+</head>
+<body>
+	<h1>aaaaaaaaaaa</h1>
+	<h1>aaaaaaaaaaa</h1>
+	<h1>aaaaaaaaaaa</h1>
+	<h1>aaaaaaaaaaa</h1>
+	<h1>aaaaaaaaaaa</h1>
+</body>
+</html>

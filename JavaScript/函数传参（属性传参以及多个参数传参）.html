@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>函数传参（属性传参以及多个参数传参）</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#div1
+		{
+			background: red;
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+</head>
+<script type="text/javascript">
+	function setSlector(name,value) {
+		var oDiv=document.getElementById('div1');
+
+		oDiv.style[name]=value;
+	}
+</script>
+<body>
+	<input type="button" value="变宽" onclick="setSlector('width','300px');" />
+	<input type="button" value="变高" onclick="setSlector('height','300px');"/>
+	<input type="button" value="变黑" onclick="setSlector('background','#000');"/>
+	<div id="div1"></div>
+</body>
+</html>

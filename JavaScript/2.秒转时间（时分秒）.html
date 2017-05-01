@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>秒转时间</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		window.onload=function() 
+		{
+			var oTxt=document.getElementById('txt');
+			var oBtn=document.getElementById('btn');
+
+			oBtn.onclick=function() 
+			{	
+				var iTme=oTxt.value/60;
+				alert(parseInt(oTxt.value/3600)+'小时'+parseInt(iTme%60)+'分'+oTxt.value%60+'秒');
+			};
+		}
+		
+	</script>
+</head>
+<body>
+
+	请输入秒：
+	<input id="txt" type="text" />
+	<input id="btn" type="button" value="转换"/>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>倒序插入元素</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		window.onload=function()
+		{
+			var oTxt=document.getElementsByTagName('input')[0];
+			var oBtn=document.getElementsByTagName('input')[1];
+			var oUl=document.getElementsByTagName('ul')[0];
+
+			oBtn.onclick=function()
+			{
+				var aLi=oUl.getElementsByTagName('li');
+				var oLi=document.createElement('li');
+				//当点击时创建一个li  存放在内存
+				oLi.innerHTML=oTxt.value;
+				//将值赋给新创建的li
+				// oUl.insertBefore(oLi,aLi[0]);
+				// //当第一个创建的时候在IE会出错因为无法添加到第一个前面
+				// //将li添加到li的最前端（倒序添加）
+				if(aLi.length>0)
+				{
+					oUl.insertBefore(oLi,aLi[0]);
+				}
+				else
+				{
+					oUl.appendChild(oLi);
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" />
+	<input type="button" value="创建"/>
+	<ul>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>侧边栏（代码优化）</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#div1
+		{
+			width: 150px;
+			height: 200px;
+			background: green;
+			position:absolute;
+			left: -150px;
+		}
+		#div1 span
+		{
+			
+			width: 20px;
+			height: 60px;
+			right:-20px;
+			top: 70px;
+			line-height: 20px;
+			background: blue;
+			position:absolute;
+			
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function()
+		{
+			var oDiv=document.getElementById('div1');
+
+			oDiv.onmouseover=function()
+			{
+				startMove(0);
+			}
+			oDiv.onmouseout=function()
+			{
+				startMove(-150);
+			}
+
+
+		}
+
+			var timer=null;
+			function startMove(iTarger)	//鼠标移入向右移动显示
+			{
+				var oDiv=document.getElementById('div1');
+				
+
+				clearInterval(timer);
+				
+
+				timer=setInterval(function()
+				{
+					var speed=0;
+					if (oDiv.offsetLeft>iTarger) 
+					{
+						speed=-10;
+					}
+					else
+					{
+						speed=10;
+					}
+
+					if (oDiv.offsetLeft==iTarger) 
+					{
+						clearInterval(timer);
+					}
+					else
+					{
+						oDiv.style.left=oDiv.offsetLeft+speed+'px';
+					}
+				},30);
+			};
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<span>分享到</span>
+	</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>一键全选，不选以及反选</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		window.onload=function() 
+		{
+			var iBtn1=document.getElementById('btn1');
+			var iBtn2=document.getElementById('btn2');
+			var iBtn3=document.getElementById('btn3');
+			var iDiv=document.getElementById('div1');    
+				//添加个div，方便选取input标签中复选框的数组，否则会把按钮也加进数组；
+			var cBox=iDiv.getElementsByTagName('input');
+
+			iBtn1.onclick=function() 
+			{
+				for (var i = 0; i < cBox.length; i++)
+				{
+					cBox[i].checked=true;
+				};
+			};
+
+			iBtn2.onclick=function() 
+			{
+				for (var i = 0; i < cBox.length; i++)
+				{
+					cBox[i].checked=false;
+				};
+			};
+
+			iBtn3.onclick=function() 
+			{
+				for (var i = 0; i < cBox.length; i++)
+				{
+					if (cBox[i].checked==false)   
+						//  需要是‘==’全等 一个‘=’为赋值，判断是否为false
+					{
+						cBox[i].checked=true;
+					} 
+					else 
+					{
+						cBox[i].checked=false;
+					}
+					
+				};
+			};
+		}
+	</script>
+</head>
+<body>
+	<input id="btn1" type="button" value="全选" />
+	<input id="btn2" type="button" value="不选" />
+	<input id="btn3" type="button" value="反选" /><br/>
+	<div id="div1">
+		<input type="checkbox" /><br/>
+		<input type="checkbox" /><br/>
+		<input type="checkbox" /><br/>
+		<input type="checkbox" /><br/>
+		<input type="checkbox" /><br/>
+		<input type="checkbox" /><br/>
+		<input type="checkbox" /><br/>
+		<input type="checkbox" /><br/>
+		<input type="checkbox" /><br/>
+		<input type="checkbox" /><br/>
+	</div>
+</body>
+</html>

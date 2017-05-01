@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{
+			font-family: 微软雅黑;
+		}
+		.error{
+			color: red;
+			font-weight: bold;
+			display: none;
+		}
+	</style>
+	<script src="jquery.js"></script>
+	<script>
+	$(document).ready(function(){
+		$('input.auth').data('s','0');
+		// 用户名验证
+		$('input[name=username]').blur(function(){
+			var val=this.value;
+
+			if (val.length<6) {
+				$(this).data('s',0);
+				$(this).next().show();
+			}else{
+				$(this).data('s',1);
+				$(this).next().hide();
+			};
+		});
+		//密码验证
+		$('input[name=password]').blur(function(){
+			var val=this.value;
+
+			if(val.length<8){
+				$(this).data('s',0);
+				$(this).next().show();
+			}else{
+				$(this).data('s',1);
+				$(this).next().hide();
+			};
+		});
+		// 确认密码验证
+		$('input[name=repassword]').blur(function(){
+			var val2 = $('input[name=password]').val();
+			var val1 = this.value;
+
+			if (val1!=val2) {
+				$(this).data('s',0);
+				$(this).next().show();
+			}else{
+				$(this).data('s',1);
+				$(this).next().hide();
+			}
+		});
+
+		// 验证邮箱
+		$('input[name=email]').blur(function(){
+			var val = this.value;
+
+			if (val.match(/.+@.+\.[a-zA-Z]{2,4}$/)) {
+				$(this).data('s',1);
+				$(this).next().hide();
+			}else{
+				$(this).data('s',0);
+				$(this).next().show();
+			}
+		});
+		// 验证是否全部符合标准
+		$('form').submit(function(){
+			$('input.auth').blur();
+			
+			var tot = 0;
+			$('input.auth').each(function(){
+				tot+=$(this).data('s');
+			});
+			if (tot!=4) {
+				return false;
+			}
+		});
+	});
+	</script>
+</head>
+<body>
+	<form action="reg.php"	method="get">
+	<p>用户名：</p>
+	<p>
+		<input type="text" name="username" class="auth" />
+		<span class="error">*用户名至少6位！</span>
+	</p>
+	<p>密码：</p>
+	<p>
+		<input type="text" name="password" class="auth" />
+		<span class="error">*密码长度至少8位！</span>
+	</p>
+	<p>确认密码：</p>
+	<p>
+		<input type="text" name="repassword" class="auth" />
+		<span class="error">*两次密码不一致</span>
+	</p>
+	<p>你的邮箱：</p>
+	<p>
+		<input type="text" name="email" class="auth" />
+		<span class="error">*邮箱格式不正确</span>
+	</p>
+	<p>你的手机号：</p>
+	<p>
+		<input type="text" name="phone" class="auth" />
+		<span class="error">*手机号码格式不正确</span>
+	</p>
+	<p><input type="submit" value="OK" /></p>
+	</form>
+</body>
+</html>

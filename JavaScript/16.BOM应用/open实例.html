@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>open实例(代码运行框)</title>
+	<script type="text/javascript">
+	window.onload=function(){
+
+		var oTxt=document.getElementById('txt1');
+		var oBtn=document.getElementById('btn1');
+
+		oBtn.onclick=function(){
+
+			//在新窗口打开about：blank页面
+			var oNewWin=window.open('about:blank','_blank');
+			oNewWin.document.write(oTxt.value);
+		}
+	}
+	</script>
+</head>
+<body>
+<textarea id="txt1" rows="10" cols="40"></textarea>
+<input id="btn1" type="button" value="运行"/>
+</body>
+</html>

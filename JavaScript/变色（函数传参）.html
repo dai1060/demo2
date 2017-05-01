@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>变色（函数传参）</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#div1{
+			background: red;
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+	<script type="text/javascript">
+		function setColor(color) { 			  //  参数为color
+			
+			var oDiv=document.getElementById('div1'); //  获取元素div1
+			oDiv.style.background=color;    // 背景颜色为传进去的color 不用加引号
+		}
+
+	</script>
+</head>
+<body>
+	<input type="button" value="变黄" onclick="setColor('yellow');" />
+	<input type="button" value="变绿" onclick="setColor('green');"/>
+	<input type="button" value="变黑" onclick="setColor('#000');"/>
+	<div id="div1"></div>
+</body>
+</html>

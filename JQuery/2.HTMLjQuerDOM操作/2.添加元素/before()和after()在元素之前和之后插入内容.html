@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="../../jquery.js"></script>
+	<script>
+		$(document).ready(function(){
+
+			$('button:first').click(function(){
+
+				// 在元素之前（最靠近元素）添加
+				$('img').before('<b>之前</b>')
+			});
+			$('button:last').click(function(){
+
+				$('img').after('<i>之后</i>')
+			});
+		});
+	</script>
+</head>
+<body>
+<img src="logo2.png"/>
+<br /><br />
+<button>图片之前添加文本</button>
+<button>图片之后添加文本</button>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="../../jquery.js"></script>
+	<script>
+		$(document).ready(function(){
+
+			$('button:first').click(function(){
+
+				//在元素结尾插入内容
+				$('p').append(' <b>New Text</b>')
+			});
+			$('button:eq(1)').click(function(){
+
+				$('ol').append('<li>New List item</li>')
+			});
+		});
+	</script>
+</head>
+<body>
+<p>这是一个段落</p>
+<p>这是另一个段落</p>
+<ol>
+	<li>List item 1</li>
+	<li>List item 2</li>
+	<li>List item 3</li>
+</ol>
+<button>添加文本</button>
+<button>添加段落</button>
+</body>
+</html>

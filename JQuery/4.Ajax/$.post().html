@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="jquery.js"></script>
+	<script>
+	$(document).ready(function(){
+
+		$('button').click(function(){
+
+			//使用post请求获取Ajax.txt中的数据  post没有缓存
+			$.post('Ajax.txt',function(data,status){
+				$('div').html(data+'状态：'+status);
+			})
+		})
+	})
+	</script>
+</head>
+<body>
+	<div></div>
+	<button>从Ajax.txt中获取数据</button>
+</body>
+</html>

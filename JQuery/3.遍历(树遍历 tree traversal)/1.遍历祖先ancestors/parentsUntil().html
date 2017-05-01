@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+		.ancestors *{
+			border: 3px solid lightblue;
+			color: blue;
+			display: block;
+			margin: 15px;
+			padding: 5px;
+			list-style: none;
+		}
+	</style>
+	<script src="../../jquery.js"></script>
+	<script>
+		$(document).ready(function(){
+
+				// 遍历从span元素到div元素的中间所有父元素
+				$('span').parentsUntil('div').css({'color':'red','border':'2px solid red'});
+			});
+	</script>
+</head>
+<body class="ancestors">body
+<div style="width:600px">div1
+	<ul>ul
+		<li>li
+			<span>span</span>
+		</li>
+	</ul>
+</div>
+</body>
+</html>

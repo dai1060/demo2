@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="../../jquery.js"></script>
+	<script>
+		$(document).ready(function(){
+
+			$('button:first').click(function(){
+
+				// 设置文本内容
+				$('p:first').text(function(i,origText){
+
+					return '旧文本：' + origText +' 新文本：Hello,World!'+'(index:'+i+')';
+				});
+			});
+			$('button:eq(1)').click(function(){
+
+				// 设置元素内容(包括标签)
+				$('p:eq(1)').html(function(i,origText){
+
+					return '旧文本：' + origText +' 新文本：<b>Hello,World!</b>'+'(index:'+i+')';
+				});
+			});
+			$('button:eq(2)').click(function(){
+
+				// 设置属性
+				$('p:last').attr('style',function(){
+
+					return 'color:green;'
+				})
+			});
+			$('button:last').click(function(){
+
+				//设置输入框的value值
+				$('input:eq(0)').val('DAY!');
+			});
+		});
+
+	</script>
+</head>
+<body>
+<p>这是第一个p元素</p>
+<p>这是第二个p元素</p>
+<p style="color:red;">这是第三个p元素</p>
+输入框：<input type="text" value="ZLS"/><br /><br />
+<button>显示 新/旧 文本</button>
+<button>显示 新/旧 HTML</button>
+<button>设置属性</button>
+<button>设置输入框的值</button>
+</body>
+</html>

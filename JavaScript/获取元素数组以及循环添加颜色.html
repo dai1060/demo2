@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>获取数组及循环</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		div 
+		{
+			width: 200px;
+			height: 200px;
+			border: 1px solid;
+			float: left;
+			margin: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function() 
+		{
+			var sDiv=document.getElementsByTagName('div');  //  获取div标签元素
+			for (var i = 0; i < sDiv.length; i++) {			//  .length 获取元素个数
+				sDiv[i].style.background='red';				//  循环背景添加红色
+			}
+		}
+	</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

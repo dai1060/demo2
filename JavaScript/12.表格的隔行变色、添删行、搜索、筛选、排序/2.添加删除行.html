@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>添加删除行</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		window.onload=function()
+		{
+			var oTab=document.getElementById('tab1');
+			
+			var oName=document.getElementsByTagName('input')[0];
+			var oAge=document.getElementsByTagName('input')[1];
+			var oBtn=document.getElementsByTagName('input')[2];
+			var id=oTab.tBodies[0].rows.length+1
+			//赋给变量，每次点击都会在当前变量上+1
+
+			oBtn.onclick=function()
+			{
+				var oTr=document.createElement('tr');
+
+				var oTd=document.createElement('td');
+				oTd.innerHTML=id++;
+				//每多点击一次，变量+1，相同数字不会重复
+				oTr.appendChild(oTd);
+
+				var oTd=document.createElement('td');
+				oTd.innerHTML=oName.value;
+				oTr.appendChild(oTd);
+
+				var oTd=document.createElement('td');
+				oTd.innerHTML=oAge.value;
+				oTr.appendChild(oTd);
+
+				var oTd=document.createElement('td');
+				oTd.innerHTML='<a href="javascript:;">删除</a>';
+				oTr.appendChild(oTd);
+
+				oTd.getElementsByTagName('a')[0].onclick=function()
+				{
+					oTab.tBodies[0].removeChild(this.parentNode.parentNode);
+				}
+				// 删除当前行
+
+				oTab.tBodies[0].appendChild(oTr);
+
+
+			}
+		}
+	</script>	
+</head>
+<body>
+	姓名：<input type="text" />
+	年龄：<input type="text" />
+	<input type="button" value="添加"/>
+	<table id="tab1" border="1px" width="500px">
+		<thead>
+			<td>ID</td>
+			<td>姓名</td>
+			<td>年龄</td>
+			<td>操作</td>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>Blue</td>
+				<td>27</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>张三</td>
+				<td>23</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>李四</td>
+				<td>25</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>王刚</td>
+				<td>20</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>张伟</td>
+				<td>29</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

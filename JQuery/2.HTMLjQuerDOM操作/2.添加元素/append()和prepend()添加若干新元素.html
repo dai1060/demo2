@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="../../jquery.js"></script>
+	<script>
+		$(document).ready(function(){
+
+			$('button').click(function(){
+
+				var txt1 = "<p>文本。</p>";					// 用HTML创建文本
+				var txt2 = $('<p></p>').text('文本。');		// 用jQuery创建文本
+				var txt3 = document.createElement('p');		// 用DOM创建文本
+				txt3.innerHTML = "文本。"
+				
+				$('body').append(txt1,txt2,txt3);			// 追加新元素
+			});
+		});
+	</script>
+</head>
+<body>
+<img src="logo2.png"/>
+<br /><br />
+<button>添加文本</button>
+
+</body>
+</html>

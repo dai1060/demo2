@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>右下角固定悬浮框</title>
+	<style type="text/css">
+		#div1{width: 150px;height: 100px;position: absolute;right: 0;bottom: 0;background: red;}
+	</style>
+	<script>
+		window.onscroll=window.onresize=function(){
+
+			var oDiv=document.getElementById('div1');
+			var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+
+			oDiv.style.top=scrollTop+(document.documentElement.clientHeight-oDiv.offsetHeight)+'px';
+		}
+	</script>
+</head>
+<body style="height: 2000px">
+<div id="div1"></div>
+</body>
+</html>

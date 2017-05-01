@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="jquery.js"></script>
+	<script>
+	$(document).ready(function(){
+
+		$('button').click(function(){
+
+			// 过滤responseText中id=p1的元素
+			// $('div').load('Ajax.txt #p1');
+			
+			// 返回responseText替换所选元素
+			$('div').load('Ajax.txt');
+		})
+		
+	});
+	</script>
+</head>
+<body>
+	<div><h1>使用jQuery修改文本</h1></div>
+	<button>获取外部文本</button>
+</body>
+</html>

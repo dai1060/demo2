@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>只能输入数字的文本框</title>
+	<script>
+		window.onload=function(){
+
+			var oTxt=document.getElementsByTagName('input')[0];
+
+			oTxt.onkeydown=function(ev){
+
+				var oEvent=ev||event;
+				//0-  48     9-57
+				//如果用户按的不是退格 也不是数字
+				if (oEvent.keyCode!=8 && (oEvent.keyCode<48 || oEvent.keyCode>57)) {
+
+					return false;
+				}				
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" />
+</body>
+</html>

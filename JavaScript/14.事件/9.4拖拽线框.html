@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>拖拽带框</title>
+	<style type="text/css">
+	div{width:100px;height: 100px;background: yellow;position:absolute;}
+	.box{border:1px dashed black;background: none;}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+
+			var oDiv=document.getElementsByTagName('div')[0];
+
+			//鼠标点击时拖拽
+			oDiv.onmousedown=function(ev){
+
+				var oEvent= ev||event;
+
+				// 计算出鼠标与div的相对距离
+				var disX=oEvent.clientX-oDiv.offsetLeft;
+				var disY=oEvent.clientY-oDiv.offsetTop;
+
+				//创建oBox
+				var oBox=document.createElement('div');
+				oBox.className='box';
+				oBox.style.width=oDiv.offsetWidth+'px';
+				oBox.style.height=oDiv.offsetHeight+'px';
+
+				// 每次移动oBox的初始位置
+				oBox.style.left=oDiv.offsetLeft+'px';
+				oBox.style.top=oDiv.offsetTop+'px';
+
+				//添加oBox
+				document.body.appendChild(oBox);
+
+				//拖拽
+				document.onmousemove=function(ev){
+
+					var oEvent= ev||event;
+
+					var edgeLeft=oEvent.clientX-disX;
+					var edgeTop=oEvent.clientY-disY;
+
+					//限制拖拽到屏幕外
+					if (edgeLeft<0) 
+					{
+						edgeLeft=0;
+					}
+					else if (edgeLeft>document.documentElement.clientWidth-oDiv.offsetWidth) 
+					{
+						edgeLeft=document.documentElement.clientWidth-oDiv.offsetWidth
+					}
+
+					if (edgeTop<0) 
+					{
+						edgeTop=0;
+					}
+					else if (edgeTop>document.documentElement.clientHeight-oDiv.offsetHeight) 
+					{
+						edgeTop=document.documentElement.clientHeight-oDiv.offsetHeight
+					}
+
+					//鼠标与div的相对距离不变  鼠标位置改变div位置也改变
+					oBox.style.left=edgeLeft+'px';
+					oBox.style.top=edgeTop+'px';
+				}
+
+				document.onmouseup=function(){
+
+					//关闭移动
+					document.onmousemove=null;
+					document.onmouseup=null;
+
+					oDiv.style.left=oBox.offsetLeft+'px';
+					oDiv.style.top=oBox.offsetTop+'px';
+
+					document.body.removeChild(oBox);
+				}
+				return false;
+				//阻止低版本ff 拖拽bug
+			}
+		}
+	</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>
